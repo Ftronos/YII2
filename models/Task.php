@@ -8,7 +8,6 @@
 
   namespace app\models;
 
-
   use yii\base\Model;
 
   class Task extends Model
@@ -30,13 +29,7 @@
 		[['name', 'author', 'performer', 'observer'], 'string'],
 		[['description'], 'string', 'max' => 2000],
 		[['creationDate', 'updateDate'], 'date', 'format' => 'php:Y-m-d'],
-		[['time'], 'myValidate']
+		[['time'], 'app\validators\WorktimeValidator']
 	  ];
-	}
-
-	public function myValidate($attribute, $params) {
-	  if ($this -> $attribute <= 0) {
-	    $this->addError($attribute, 'ќценочное врем€ должно быть больше 0');
-	  }
 	}
   }
